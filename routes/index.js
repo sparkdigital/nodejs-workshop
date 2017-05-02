@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
   // Send simple HTTP response with statuscode 200 (OK)
   res.status(200).send({
-    message: "Hello world!"
+    message: "Hello world! This is being live reloaded!"
   });
 });
 
