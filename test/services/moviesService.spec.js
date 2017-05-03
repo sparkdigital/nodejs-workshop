@@ -26,9 +26,14 @@ describe('Movies Service', () => {
   // Define a test block
   describe(`when calling the 'list()' method`, () => {
     // Define a test
-    it('should respond with a list of movies', () => {
-      const movies = MoviesService.list();
-      expect(movies).to.deep.equal(mockedMoviesList);
+    it('should respond with a list of movies', done => {
+      const fetchMoviesList = MoviesService.fetchList();
+      expect(fetchMoviesList).to.be.a('promise');
+
+      fetchMoviesList.then(movies => {
+        expect(movies).to.deep.equal(mockedMoviesList);
+        done();
+      });
     });
   });
 

@@ -33,12 +33,12 @@ describe('Movies', () => {
     // Test setup. Runs before each test
     beforeEach(() => {
       // Stub the service method, to make it return whatever we want
-      sinon.stub(moviesService, 'list').returns(mockedMoviesList);
+      sinon.stub(moviesService, 'fetchList').resolves(mockedMoviesList);
     });
 
     afterEach(() => {
       // Restore the service method, for future usage
-      moviesService.list.restore();
+      moviesService.fetchList.restore();
     });
 
     // Define a test

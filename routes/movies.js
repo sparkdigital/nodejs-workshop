@@ -17,7 +17,9 @@ router.all('*', (req, res, next) => {
 
 /* GET movies listing. */
 router.get('/', (req, res, next) => {
-  res.send(moviesService.list());
+  moviesService.fetchList()
+    .then(movies => res.send(movies))
+    .catch(err => next(err));
 });
 
 /* SEARCH movies. */

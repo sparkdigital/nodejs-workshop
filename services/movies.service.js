@@ -3,8 +3,10 @@
 var mockedMoviesList = require('../data/mockedMoviesList.js');
 
 class Movies {
-  static list () {
-    return mockedMoviesList;
+  static fetchList () {
+    return new Promise(resolve => {
+      resolve(mockedMoviesList);
+    });
   }
 }
 
