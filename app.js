@@ -1,10 +1,19 @@
 // Require modules
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 // Require routes
 const index = require('./routes/index');
 const movies = require('./routes/movies');
+
+// Init DB
+let mongoDbName = 'movies-app';
+if(process.env.NODE_ENV === 'test') {
+  mongoDbName = 'movies-app-test';
+}
+mongoose.connect(`mongodb://localhost/${mongoDbName}`);
+mongoose.Promise = global.Promise;
 
 // Init Express app
 const app = express();

@@ -6,14 +6,13 @@ process.env.NODE_ENV = 'test';
 
 // Require deps
 const chai = require('chai');
-const chaiHttp = require('chai-http');
 const nock = require('nock');
 
 // Define the assertion syntax to use
 const expect = chai.expect;
 
 // Tell chai to use the Http module
-chai.use(chaiHttp);
+chai.use(require('chai-http'));
 
 // Require the service to test
 const OmdbService = require('../../services/omdb.service.js');

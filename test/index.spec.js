@@ -6,14 +6,13 @@ process.env.NODE_ENV = 'test';
 
 // Require deps
 const chai = require('chai');
-const chaiHttp = require('chai-http');
 const app = require('../app');
 
 // Define the assertion syntax to use
 const expect = chai.expect;
 
 // Tell chai to use the Http module
-chai.use(chaiHttp);
+chai.use(require('chai-http'));
 
 // Begin a test suite
 describe('Index', () => {
