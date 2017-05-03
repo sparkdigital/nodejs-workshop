@@ -1,11 +1,13 @@
-// Require plain JSON object
-const mockedMoviesList = require('../data/mockedMoviesList.js');
+'use strict';
 
 // Require dependencies
 const express = require('express');
 
 // Init an Express Router
 const router = express.Router();
+
+const moviesService = require('../services/movies.service.js');
+const omdbService = require('../services/omdb.service.js');
 
 // Define a middleware for all routes (*) and all methods (router.all)
 router.all('*', (req, res, next) => {
@@ -15,7 +17,18 @@ router.all('*', (req, res, next) => {
 
 /* GET movies listing. */
 router.get('/', (req, res, next) => {
-  res.send(mockedMoviesList);
+  res.send(moviesService.list());
+});
+
+/* SEARCH movies. */
+router.get('/search', (req, res, next) => {
+  omdbService.search(req.query.query, (err, movies) => {
+    if (err) {
+      return next(err);
+    }
+
+    res.send(movies);
+  });
 });
 
 module.exports = router;
