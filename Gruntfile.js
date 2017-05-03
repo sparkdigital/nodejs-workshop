@@ -7,13 +7,22 @@ module.exports = function(grunt) {
       dev: {
         script: 'bin/www'
       }
+    },
+    mochaTest: {
+      test: {
+        src: ['test/**/*.js']
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
-  // Default task(s).
+  // Define test task
+  grunt.registerTask('test', ['mochaTest']);
+
+  // Define default task.
   grunt.registerTask('default', ['nodemon']);
 };
 

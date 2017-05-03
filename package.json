@@ -7,8 +7,14 @@
   },
   "dependencies": {
     "body-parser": "~1.17.1",
-    "express": "~4.15.2",
+    "express": "~4.15.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "grunt": "^1.0.1",
-    "grunt-nodemon": "^0.4.2"
+    "grunt-mocha-test": "^0.13.2",
+    "grunt-nodemon": "^0.4.2",
+    "mocha": "^3.3.0"
   }
 }
