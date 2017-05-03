@@ -24,9 +24,9 @@ const mockedMoviesList = require('../../data/mockedMoviesList.js');
 describe('Movies Service', () => {
 
   // Define a test block
-  describe(`when calling the 'list()' method`, () => {
+  describe(`when calling the 'fetchList()' method`, () => {
     // Define a test
-    it('should respond with a list of movies', done => {
+    it('should resolve to a list of movies', done => {
       const fetchMoviesList = MoviesService.fetchList();
       expect(fetchMoviesList).to.be.a('promise');
 
