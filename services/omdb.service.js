@@ -22,38 +22,25 @@
 'use strict';
 
 // Require Node's HTTP module
-const http = require('http');
+const request = require('request');
 
 // Create a helper function for the module. This encapsulates the proper HTTP request.
 function makeOmdbRequest(path, callback) {
-  const hostname = 'www.omdbapi.com';
+  const hostname = 'http://www.omdbapi.com';
 
   // Execute the actual HTTP call and set a callback
-  return http.get({
-    hostname,
-    path
-  }, response => {
-    let body = '';
-
-    // HTTP response comes in chunks, so we need to concatenate all chunks
-    // in order to get the full response.
-    response.on('data', chunk => (body += chunk));
-
-    // After all chunks are received, an 'end' event is triggered
-    response.on('end', () => {
-
-      // We parse the response body, and get a JS Object
-      var jsonResponse = JSON.parse(body);
-
+  return request({
+    uri: `${hostname}${path}`,
+    json: true
+  }, (error, response, body) => {
       // We want to follow Node's callback convention: callback(err, res).
       // If there was no error (Response === true), we send back the json response,
       // else we send it, but as an error
-      if(jsonResponse.Response === 'True') {
-        callback(null, jsonResponse);
+      if(body.Response === 'True') {
+        callback(null, body);
       } else {
-        callback(jsonResponse);
+        callback(body);
       }
-    });
   });
 }
 

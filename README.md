@@ -18,9 +18,8 @@ The following is needed in order to run everything covered in this repo:
 
    - A proper installation of NodeJS (v6 or higher)
    - A proper installation of NPM
-   - A proper installation of Docker
+   - A proper installation of Docker with a running MongoDB docker container: `docker run --name mongo-instance -d -p 27017:27017 mongo`
    - Global grunt installation (`npm install -g grunt`)
-
 
 Usage
 -----

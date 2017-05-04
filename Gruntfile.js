@@ -1,4 +1,5 @@
 module.exports = function(grunt) {
+  'use strict';
 
   // Project configuration.
   grunt.initConfig({
@@ -15,14 +16,12 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
+  // Load the necessary grunt plugins
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-mocha-test');
 
-  // Define test task
+  // Define tasks
   grunt.registerTask('test', ['mochaTest']);
-
-  // Define default task.
   grunt.registerTask('default', ['nodemon']);
 };
 
