@@ -21,18 +21,34 @@ The following is needed in order to run everything covered in this repo:
    - A proper installation of Docker with a running MongoDB docker container: `docker run --name mongo-instance -d -p 27017:27017 mongo`
    - Global grunt installation (`npm install -g grunt` or `sudo npm install -g grunt` if running on Linux)
 
-Usage
------
+
+ENV preparation
+---------------
 
 After the repo is cloned, the directory should contain the app src files, test files and a series of configuration files, needed to run the app and tests.
-
-First step is to install dependencies:
+To prepare the environment and start working, you just need to install npm dependencies:
 
 ```
 npm install
 ```
 
-After that, grunt commands can be run:
+
+DB-Seeding
+----------
+
+There's a grunt command configured to seed the DB with some (3) sample movies. Those movies are loaded from the db-data/movies.json file.
+
+```
+grunt seed-db
+```
+
+This runs a plugin that tries to connect to mongodb on localhost:27017 and the seeds the movies collection with the previously mentioned file contents. If you're not running MongoDB with that configuration, you can change it by modifying the `Gruntfile.js` file ('easy\_mongo\_fixture' section).
+
+
+Usage
+-----
+
+There are grunt command to perform different tasks:
 
 - `grunt`: runs a minimal server listening on localhost:3000 where the API can be requested
 - `grunt test`: runs unit tests

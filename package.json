@@ -16,6 +16,7 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "grunt": "^1.0.1",
+    "grunt-easy-mongo-fixture": "^1.0.4",
     "grunt-mocha-test": "^0.13.2",
     "grunt-nodemon": "^0.4.2",
     "mocha": "^3.3.0",

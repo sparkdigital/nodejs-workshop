@@ -10,7 +10,6 @@ const Movie = mongoose.model('Movie',{
   },
   Title: String,
   Year: Number,
-  Director: String,
   Poster: String
 });
 
